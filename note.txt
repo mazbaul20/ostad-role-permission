@@ -1,0 +1,11 @@
+package:
+breeze -> blade templating with custom page setup
+spatie role and permission and
+PHPFlasher 
+	->toastr
+	->sweetalert
+
+roles crud
+users crud
+products crud
+
