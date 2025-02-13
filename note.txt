@@ -9,3 +9,26 @@ roles crud
 users crud
 products crud
 
+
+
+
+
+
+
+	'user-menu',
+	'user-list',
+	'user-create',
+	'user-edit',
+	'user-delete',
+	'role-menu',
+	'role-list',
+	'role-create',
+	'role-edit',
+	'role-delete',
+	'product-menu',
+	'product-list',
+	'product-create',
+	'product-edit',
+	'product-delete'
+
+
