@@ -30,4 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //all roles routes
     Route::get('/roles',[RoleController::class,'index'])->name('roles.index');
+    Route::get('/roles/create',[RoleController::class,'create'])->name('roles.create');
+    Route::post('/roles',[RoleController::class,'store'])->name('roles.store');
+
 });
