@@ -59,7 +59,11 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $permissions = Permission::all();
+        $role = Role::with('Permissions')->find($id);
+
+        $rolePermissions = $role->Permissions->pluck('id')->all();
+        return view('backend.pages.roles.edit',compact('role','permissions','rolePermissions'));
     }
 
     /**
@@ -67,7 +71,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:roles,name,'.$id,
+            'permission'=>'required',
+        ]);
+
+        $role = Role::find($id);
+        $role->name = $request->input('name');
+        $role->save();
+
+        $permissionId = array_map('intval', $request->input('permission'));
+        $role->syncPermissions($permissionId);
+        flash()->success('Role Updated Successfully');
+        return redirect()->route('roles.index');
     }
 
     /**
