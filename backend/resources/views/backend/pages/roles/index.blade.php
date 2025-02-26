@@ -49,7 +49,11 @@
         </td>
         <td class="d-flex gap-2">
             <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-primary btn-small">edit</a>
-            <button type="submit" class="btn btn-danger btn-small">delete</button>
+            <form action="{{ route('roles.destroy',$role->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-small">delete</button>
+            </form>
         </td>
     </tr>
 @endforeach
