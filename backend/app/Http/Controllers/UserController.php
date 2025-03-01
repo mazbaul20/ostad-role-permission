@@ -102,7 +102,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        sweetalert()->success('User deleted successfully.');
+        return redirect()->route('users.index');
     }
     public function logout(Request $request){
         Auth::guard('web')->logout();
