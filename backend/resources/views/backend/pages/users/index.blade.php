@@ -51,7 +51,7 @@
         </td>
         <td>{{ $user->email }}</td>
         <td class="d-flex gap-2">
-            <a href="user-edit.html" class="btn btn-primary btn-small">edit</a>
+            <a href="{{ route('users.edit',$user->id) }}" class="btn btn-primary btn-small">edit</a>
             <button type="submit" class="btn btn-danger btn-small">delete</button>
         </td>
     </tr>

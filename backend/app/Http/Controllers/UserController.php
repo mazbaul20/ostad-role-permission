@@ -63,7 +63,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::latest()->get();
+        $userRole = $user->roles->pluck('name')->all();
+        return view('backend.pages.users.edit',compact('user','roles','userRole'));
     }
 
     /**
@@ -71,7 +74,27 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email,'.$id,
+            'password' => 'nullable|same:confirm_password',
+            'roles' => 'required',
+        ]);
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        if($request->has('password')){
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+        $user->syncRoles($request->roles);
+        flash()->success('User Updated Successfully');
+        return redirect()->route('users.index');
     }
 
     /**
