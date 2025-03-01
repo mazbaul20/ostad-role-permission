@@ -67,7 +67,7 @@
                 </li>
 
                 <li>
-                    <a href="user-create.html"><i class='bx bx-radio-circle'></i>Create User</a>
+                    <a href="{{ route('users.create') }}"><i class='bx bx-radio-circle'></i>Create User</a>
                 </li>
 
             </ul>
