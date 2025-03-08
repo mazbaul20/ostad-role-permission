@@ -26,7 +26,7 @@
             </a>
             <ul>
                 <li>
-                    <a href="product-index.html"><i class='bx bx-radio-circle'></i>All Product</a>
+                    <a href="{{ route('products.index') }}"><i class='bx bx-radio-circle'></i>All Product</a>
                 </li>
 
                 <li>
