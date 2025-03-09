@@ -30,7 +30,7 @@
                 </li>
 
                 <li>
-                    <a href="product-create.html"><i class='bx bx-radio-circle'></i>Create Product</a>
+                    <a href="{{ route('products.create') }}"><i class='bx bx-radio-circle'></i>Create Product</a>
                 </li>
 
             </ul>
