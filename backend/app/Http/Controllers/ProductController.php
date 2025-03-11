@@ -59,7 +59,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+        return view('backend.pages.products.edit',compact('product'));
     }
 
     /**
@@ -67,7 +68,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+        ]);
+        $product = Product::find($id);
+        $product->update($request->all());
+
+        flash()->success('Product updated Successfully');
+        return redirect()->route('products.index');
     }
 
     /**

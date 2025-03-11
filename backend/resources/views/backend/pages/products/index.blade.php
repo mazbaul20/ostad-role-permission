@@ -47,7 +47,7 @@
         <td>{{ $product->price }}</td>
         <td>{{ $product->quantity }}</td>
         <td class="d-flex gap-2">
-            <a href="product-edit.html" class="btn btn-primary btn-small">edit</a>
+            <a href="{{ route('products.edit',$product->id) }}" class="btn btn-primary btn-small">edit</a>
             <button type="submit" class="btn btn-danger btn-small">delete</button>
         </td>
     </tr>
