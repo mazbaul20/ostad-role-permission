@@ -19,24 +19,28 @@
             </a>
 
         </li>
+        @can('product-menu')
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i></div>
                 <div class="menu-title">Product</div>
             </a>
             <ul>
+                @can('product-list')
                 <li>
                     <a href="{{ route('products.index') }}"><i class='bx bx-radio-circle'></i>All Product</a>
                 </li>
-
+                @endcan
+                @can('product-create')
                 <li>
                     <a href="{{ route('products.create') }}"><i class='bx bx-radio-circle'></i>Create Product</a>
                 </li>
-
+                @endcan
             </ul>
         </li>
-
+        @endcan
         <li class="menu-label">Pages</li>
+        @can('role-menu')
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-cart'></i>
@@ -44,16 +48,20 @@
                 <div class="menu-title">Role and Permission</div>
             </a>
             <ul>
+                @can('role-list')
                 <li>
                     <a href="{{ route('roles.index') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
                 </li>
-
+                @endcan
+                @can('role-create')
                 <li>
                     <a href="{{ route('roles.create') }}"><i class='bx bx-radio-circle'></i>Create Role</a>
                 </li>
+                @endcan
             </ul>
         </li>
-
+        @endcan
+        @can('user-menu')
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-user-circle"></i>
@@ -61,17 +69,19 @@
                 <div class="menu-title">Users</div>
             </a>
             <ul>
-
+                @can('user-list')
                 <li>
                     <a href="{{ route('users.index') }}"><i class='bx bx-radio-circle'></i>All Users</a>
                 </li>
-
+                @endcan
+                @can('user-create')
                 <li>
                     <a href="{{ route('users.create') }}"><i class='bx bx-radio-circle'></i>Create User</a>
                 </li>
-
+                @endcan
             </ul>
         </li>
+        @endcan
         <li class="menu-label">Forms & Tables</li>
         <li>
             <a class="has-arrow" href="javascript:;">

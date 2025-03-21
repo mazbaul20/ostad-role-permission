@@ -14,15 +14,18 @@
                 </ol>
             </nav>
         </div>
+        @can('product-create')
         <div class="ms-auto">
             <div class="btn-group">
                 <a href="{{ route('products.create') }}" class="btn btn-primary">Create Product</a>
             </div>
         </div>
+        @endcan
     </div>
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase">Product List</h6>
     <hr>
+    @can('product-list')
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -47,12 +50,16 @@
         <td>{{ $product->price }}</td>
         <td>{{ $product->quantity }}</td>
         <td class="d-flex gap-2">
+            @can('product-edit')
             <a href="{{ route('products.edit',$product->id) }}" class="btn btn-primary btn-small">edit</a>
+            @endcan
+            @can('product-delete')
             <form action="{{ route('products.destroy',$product->id) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger btn-small">delete</button>
             </form>
+            @endcan
         </td>
     </tr>
 @endforeach
@@ -63,7 +70,7 @@
             </div>
         </div>
     </div>
-
+    @endcan
 
     <!-- end-content -->
 @endsection
